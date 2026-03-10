@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTrack Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="container">
+        
+        <!-- 1. Welcome Message -->
+        <header class="header-section">
+            <div class="welcome-text">
+                <h1 id="greeting">Good Morning, Edward!</h1>
+                <p id="date-display">Loading date...</p>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#" data-page="dashboard" class="nav-link active">Home</a></li>
+                    <li><a href="#" data-page="history" class="nav-link">History</a></li>
+                    <li><a href="#" data-page="profile" class="nav-link">Profile</a></li>
+                    <li><a href="#" data-page="settings" class="nav-link">Settings</a></li>
+                    <li><a href="#" data-page="logout" class="nav-link">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- 2. Add Medicine Button -->
+        <div class="action-area">
+            <button class="btn-add" id="add-medicine-btn">
+                <span>+</span> Add Medicine
+            </button>
+        </div>
+
+        <!-- 3. Today's Medicine Schedule Table -->
+        <section class="schedule-card">
+            <div class="card-header">
+                <h2>Today's Schedule</h2>
+                <span class="med-count" id="medicine-count">0 medicines</span>
+            </div>
+            <div class="table-container">
+                <table id="medicine-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Medicine Name</th>
+                            <th>Dosage</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="medicine-list">
+                        <!-- Medicine rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <p>No medicines scheduled for today.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 MediTrack. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <!-- Add Medicine Modal -->
+    <div class="modal" id="add-medicine-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New Medicine</h3>
+                <button class="modal-close" id="close-modal">&times;</button>
+            </div>
+            <form id="add-medicine-form">
+                <div class="form-group">
+                    <label for="medicine-name">Medicine Name</label>
+                    <input type="text" id="medicine-name" required placeholder="e.g., Vitamin D3">
+                </div>
+                <div class="form-group">
+                    <label for="medicine-time">Time</label>
+                    <input type="time" id="medicine-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="medicine-dosage">Dosage</label>
+                    <input type="text" id="medicine-dosage" required placeholder="e.g., 1 Capsule">
+                </div>
+                <button type="submit" class="btn-submit">Save Medicine</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reminder Alert Modal -->
+    <div class="modal" id="reminder-modal">
+        <div class="modal-content reminder-content">
+            <div class="modal-header">
+                <h3> Medicine Reminder</h3>
+                <button class="modal-close" id="close-reminder">&times;</button>
+            </div>
+            <div class="reminder-body">
+                <p id="reminder-message">It's time to take your medicine!</p>
+                <div class="reminder-actions">
+                    <button class="btn-taken" id="btn-taken">I Took It</button>
+                    <button class="btn-snooze" id="btn-snooze">Snooze</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
